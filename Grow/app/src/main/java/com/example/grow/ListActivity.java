@@ -27,6 +27,7 @@ public class ListActivity extends Activity {
             "Internet","Interviews","Java","Full Stack"};
     //CircularProgressDrawable.ProgressDrawableSize pd;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,7 @@ public class ListActivity extends Activity {
         listView.setAdapter(adapter);
 
         new JsonTask().execute("https://jsonplaceholder.typicode.com/posts/1");
+
 
         listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {

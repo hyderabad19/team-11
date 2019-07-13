@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".VideoActivity"/>
         <activity android:name=".ListActivity"/>
+        <activity android:name=".MainDummyActivity"/>
+        <activity android:name=".reg"/>
     </application>
 
 </manifest>

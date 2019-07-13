@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        Intent i = new Intent(this, ListActivity.class);
+        Intent i = new Intent(this, MainDummyActivity.class);
         startActivity(i);
     }
 

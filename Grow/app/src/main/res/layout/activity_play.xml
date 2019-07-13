@@ -24,7 +24,7 @@
                 android:id="@+id/coinImage"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/coin" />
+                android:src="@drawable/ic_launcher_background" />
 
             <TextView
                 android:id="@+id/coinText"

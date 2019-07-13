@@ -8,11 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
-import android.app.DownloadManager.Request;
+//import android.app.DownloadManager.Request;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +43,8 @@ public class PlayActivity extends AppCompatActivity{
         qid++;
         coin.setText(String.valueOf(count));
 
-        String url="";
+        String url="https://10.0.2.2:8080/user/quiz";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest postRequest = new StringRequest(
                 Request.Method.POST, url,
                 new Response.Listener<String>()
@@ -70,7 +74,7 @@ public class PlayActivity extends AppCompatActivity{
                 return params;
             }
         };
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(postRequest);
 
     }
     public void onClick2(View view1)

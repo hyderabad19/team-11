@@ -13,32 +13,134 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ListActivity extends Activity {
     // Array of strings...
-    String[] mobileArray = {"general Skills","Life Skills","English","Electrical",
-            "Internet","Interviews","Java","Full Stack"};
-    //CircularProgressDrawable.ProgressDrawableSize pd;
 
+    //CircularProgressDrawable.ProgressDrawableSize pd;
+    JSONObject res;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_listview, mobileArray);
+       // new JsonTask().execute("http://localhost:8080/user/getvideos");
+        String url = "http://10.0.2.2:8080/user/getvideos";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        // Initialize a new JsonObjectRequest instance
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Do something with response
+                        //mTextView.setText(response.toString());
+
+                        // Process the JSON
+                        // Get the JSON array
+//                            JSONArray array = response.getJSONArray("students");
+//
+//                            // Loop through the array elements
+//                            for(int i=0;i<array.length();i++){
+//                                // Get current json object
+//                                JSONObject student = array.getJSONObject(i);
+//
+//                                // Get the current student (json object) data
+//                                String firstName = student.getString("firstname");
+//                                String lastName = student.getString("lastname");
+//                                String age = student.getString("age");
+//
+//                                // Display the formatted json data in text view
+//                                mTextView.append(firstName +" " + lastName +"\nage : " + age);
+//                                mTextView.append("\n\n");
+//                            }
+                        res = response;
+                        Log.d("JSONReq",response.toString());
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        // Do something when error occurred
+                        Log.d("err",error.getMessage());
+                    }
+                }
+        );
+        /*StringRequest postRequest = new StringRequest(
+                Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.getMessage());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("email", "rahulmora007@gmail.com");
+                params.put("password", "rahul");
+
+                return params;
+            }
+        };*/
+        requestQueue.add(jsonObjectRequest);
+        String[] mobile_array={"abc0","def"};
+        String resString = "";
+
+       try {
+           resString = res.getJSONObject("contentLocation").getJSONObject("data").toString();
+       }catch(JSONException j) {
+           Log.d("err",j.toString());
+       }
+       Log.d("RESST",resString);
+
+
+
+                   // Add JsonObjectRequest to the RequestQueue
+                   ArrayAdapter adapter = new ArrayAdapter<String>(this,
+                R.layout.activity_listview, mobile_array);
 
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
-
-        new JsonTask().execute("https://jsonplaceholder.typicode.com/posts/1");
 
         listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
@@ -52,67 +154,7 @@ public class ListActivity extends Activity {
                 }
         );
     }
-    private class JsonTask extends AsyncTask<String, String, String> {
 
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-
-        }
-
-        protected String doInBackground(String... params) {
-
-
-            HttpURLConnection connection = null;
-            BufferedReader reader = null;
-
-            try {
-                URL url = new URL(params[0]);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-
-
-                InputStream stream = connection.getInputStream();
-
-                reader = new BufferedReader(new InputStreamReader(stream));
-
-                StringBuffer buffer = new StringBuffer();
-                String line = "";
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line+"\n");
-                    Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
-
-                }
-
-                return buffer.toString();
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (connection != null) {
-                    connection.disconnect();
-                }
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            Toast.makeText(ListActivity.this, result, Toast.LENGTH_LONG);
-        }
-    }
 
 }
 

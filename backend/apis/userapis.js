@@ -77,13 +77,9 @@ router.post('/getUserDetails',function(req,res){
             }
             else{
                 var userDetails = decoded;
-                User.findOne({ email  : userDetails.email }).select('name email password mobile isPhotoUploaded profileImage').exec(function(err,user){
-                    if(user){
-                        res.json({
-                            success : true,
-                            data : user
-                        })
-                    }
+                res.json({
+                    success : true,
+                    data : userDetails
                 });
                 
             }
@@ -119,7 +115,7 @@ router.post('/register',function(req,res){
     });
 });
 
-router.post('/getVideos',function(req,res){
+router.get('/getVideos',function(req,res){
     var sql = "select * from content";
     con.query(sql, function(err, result){
         if(err){

@@ -17,10 +17,12 @@ con.connect(function(err) {
 });
 
 var userapiRouter = require('./apis/userapis'); 
+var forumapiRouter = require('./apis/forumapis');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
+app.use('/forum',forumapiRouter);
 
 app.get('/',function(req,res){
     res.send("HEllo world!");

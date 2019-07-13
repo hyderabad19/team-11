@@ -148,6 +148,30 @@ router.get('/getVideos',function(req,res){
     })
 });
 
+router.get('/getvideos2',function(req,res){
+    var sql = "select * from content";
+    con.query(sql, function(err, result){
+        if(err){
+            res.json({
+                success : false,
+                message : "An error occured"
+            });
+        }
+        else{
+            var videos=[];
+            result.forEach(content => {
+                if(content.contentType=="video"){
+                    videos.push(content.contentLocation);
+                }
+                
+            });
+            res.json({
+                data : videos
+            });
+        }
+    })
+});
+
 
 router.post('/quizz',function(req,res){
     var qno = req.body.qno;

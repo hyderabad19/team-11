@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        android:networkSecurityConfig="@xml/network_security_config"
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +24,10 @@
         <activity android:name=".ListActivity"/>
         <activity android:name=".MainDummyActivity"/>
         <activity android:name=".reg"/>
+        <activity android:name=".UserActivity"/>
+        <activity android:name=".QuizActivity"/>
+        <activity android:name=".PlayActivity"/>
+        <activity android:name=".TraineeActivity"/>
     </application>
 
 </manifest>

@@ -21,11 +21,11 @@ public class UserActivity extends AppCompatActivity {
         startActivity(i);
     }
     public void ForumClick(View view){
-        Intent i = new Intent(UserActivity.this, ForumActivity.class);
-        startActivity(i);
+        // Intent i = new Intent(UserActivity.this, ForumActivity.class);
+        // startActivity(i);
     }
     public void HelpClick(View view){
-        Intent i = new Intent(UserActivity.this, HelpActivity.class);
-        startActivity(i);
+        // Intent i = new Intent(UserActivity.this, HelpActivity.class);
+        // startActivity(i);
     }
 }

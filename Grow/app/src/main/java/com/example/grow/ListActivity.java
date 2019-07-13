@@ -13,6 +13,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +48,7 @@ public class ListActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
-        new JsonTask().execute("https://jsonplaceholder.typicode.com/posts/1");
+
 
 
         listView.setOnItemClickListener(
@@ -53,8 +62,29 @@ public class ListActivity extends Activity {
                     }
                 }
         );
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final String url = "http://10.0.2.2:8080/user/getvideos2";
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response
+                        Log.d("Response", response.toString());
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        );
+        requestQueue.add(getRequest);
     }
-    private class JsonTask extends AsyncTask<String, String, String> {
+    /*private class JsonTask extends AsyncTask<String, String, String> {
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -114,7 +144,7 @@ public class ListActivity extends Activity {
             super.onPostExecute(result);
             Toast.makeText(ListActivity.this, result, Toast.LENGTH_LONG);
         }
-    }
+    }*/
 
 }
 

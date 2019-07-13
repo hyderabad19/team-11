@@ -10,14 +10,14 @@ public class TraineeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_trainee);
     }
     public void Forum(View view){
-        Intent i = new Intent(TraineeActivity.this, ForumActivity.class);
-        startActivity(i);
+       // Intent i = new Intent(TraineeActivity.this, ForumActivity.class);
+        //startActivity(i);
     }
     public void alertClick(View view){
-        Intent i = new Intent(TraineeActivity.this, AlertActivity.class);
-        startActivity(i);
+       // Intent i = new Intent(TraineeActivity.this, AlertActivity.class);
+        //startActivity(i);
     }
 }

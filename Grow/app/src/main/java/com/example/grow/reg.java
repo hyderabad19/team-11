@@ -1,6 +1,7 @@
 package com.example.grow;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +44,9 @@ public class reg extends Activity {
         Name = (EditText) findViewById(R.id.name);
         textdob = (EditText) findViewById(R.id.DOB);
         textGender = (EditText) findViewById(R.id.gender);
+
+
+
        /* buttonRegister.setOnClickListener(
                 {
                         new View.OnClickListener()
@@ -89,6 +93,11 @@ public class reg extends Activity {
                         }
                 }
         );*/
+    }
+
+    public void registerClicked(View view) {
+        Intent i = new Intent(reg.this, UserActivity.class);
+        startActivity(i);
     }
 }
 

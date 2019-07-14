@@ -20,9 +20,8 @@ public class VideoActivity extends Activity {
         String path="https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4";
         TextView title = (TextView) findViewById(R.id.title);
         TextView desc = (TextView) findViewById(R.id.desc);
-
-        Intent intent = getIntent();
-        //String titleData =(String) intent.;
+        Bundle bundle = getIntent().getExtras();
+        String titleData =bundle.getString("tile");
 
         title.setText("Tile of the video");
         desc.setText("Video about a topic either general or specific and goes on multiple lines");

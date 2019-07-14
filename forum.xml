@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".forum">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DISCUSSION FORUM"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/textview_border"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
+                android:text="Query What is the meaning of word CORPULENT?:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
+                android:text="email:agr@gmail.com"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
+                android:text="Answer1: Obese"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
+                android:text="Answer2 :Gaunt"
+                android:textSize="18sp"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Answer The Question"/>
+
+
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/textview_border"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="15dp"
+            android:text="Query  :If a - b = 3 and a2 + b2 = 29, find the value of ab?"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/mail2"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="15dp"
+            android:text="email:ananthanenigowthami@gmail.com"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/ansbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Answer a Question" />
+
+     </LinearLayout>
+
+    <Button
+        android:id="@+id/askbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ask a Question" />
+
+</LinearLayout>

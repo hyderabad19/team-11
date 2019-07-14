@@ -1,13 +1,16 @@
 package com.example.grow;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 //import android.app.DownloadManager.Request;
 
 import com.android.volley.Request;
@@ -24,7 +27,7 @@ public class PlayActivity extends AppCompatActivity{
     TextView buttonA,buttonB,buttonC,buttonD,question,coin;
     int count=0;
     int qid=0;
-    String correctAnswer="OptionA";
+    String correctAnswer="(1/8)";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +38,14 @@ public class PlayActivity extends AppCompatActivity{
         buttonC=(TextView)findViewById(R.id.buttonC);
         buttonD=(TextView)findViewById(R.id.buttonD);
         coin=(TextView)findViewById(R.id.coinText);
-        question.setText("question1");
-        buttonA.setText("OptionA");
-        buttonB.setText("OptionB");
-        buttonC.setText("OptionC");
-        buttonD.setText("OptionD");
-        qid++;
+        question.setText("Look at the series 2,1,(1/2),(1/4),... What number should come next");
+        buttonA.setText("(1/3)");
+        buttonB.setText("(1/8)");
+        buttonC.setText("(2/8)");
+        buttonD.setText("(1/16)");
         coin.setText(String.valueOf(count));
 
-        String url="";
+        String url="https://10.0.2.2:8080/user/quiz";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest postRequest = new StringRequest(
                 Request.Method.POST, url,
@@ -77,13 +79,77 @@ public class PlayActivity extends AppCompatActivity{
         requestQueue.add(postRequest);
 
     }
-    public void onClick2(View view1)
+    public void onClick4(View v)
     {
-        if(correctAnswer==buttonA.getText())
-            count++;
-        while(qid<9)
-            updateQuestion();
+        switch (v.getId()){
+            case R.id.buttonA:
+                if(buttonA.getText() == correctAnswer){
+                    Toast.makeText(PlayActivity.this, "You Are Correct", Toast.LENGTH_SHORT).show();
+                    count++;
+                    qid++;
+                    updateQuestion();
+                }else{
+                    GameOver();
+                }
+                break;
 
+            case R.id.buttonB:
+                if(buttonB.getText() == correctAnswer){
+                    Toast.makeText(PlayActivity.this, "You Are Correct", Toast.LENGTH_SHORT).show();
+                    count++;
+                    qid++;
+                    updateQuestion();
+                }else{
+                    GameOver();
+                }
+
+                break;
+
+            case R.id.buttonC:
+                if(buttonC.getText() == correctAnswer){
+                    Toast.makeText(PlayActivity.this, "You Are Correct", Toast.LENGTH_SHORT).show();
+                    count++;
+                    qid++;
+                    updateQuestion();
+                }else{
+                    GameOver();
+                }
+
+                break;
+
+            case R.id.buttonD:
+                if(buttonD.getText() == correctAnswer){
+                    Toast.makeText(PlayActivity.this, "You Are Correct", Toast.LENGTH_SHORT).show();
+                    count++;
+                    qid++;
+                    updateQuestion();
+                }else {
+                    GameOver();
+                }
+
+                break;
+        }
+
+
+    }
+    private void GameOver(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PlayActivity.this);
+        alertDialogBuilder
+                .setMessage("Game Over")
+                .setCancelable(false)
+                .setPositiveButton("New Game", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    }
+                })
+                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        System.exit(0);
+                    }
+                });
+        alertDialogBuilder.show();
 
     }
     public void updateQuestion()
@@ -93,13 +159,14 @@ public class PlayActivity extends AppCompatActivity{
         buttonB=(TextView)findViewById(R.id.buttonB);
         buttonC=(TextView)findViewById(R.id.buttonC);
         buttonD=(TextView)findViewById(R.id.buttonD);
-        question.setText("question2");
-        buttonA.setText("Option2");
-        buttonB.setText("Option2");
-        buttonC.setText("Option2");
-        buttonD.setText("Option2");
-        qid++;
+        question.setText("Look at the series:7,10,8,11,9,12,....What number should come next?");
+        buttonA.setText("7");
+        buttonB.setText("10");
+        buttonC.setText("12");
+        buttonD.setText("13");
+        correctAnswer="7";
         coin.setText(String.valueOf(count));
+            //Toast.makeText(PlayActivity.this, "You Marks:"+count, Toast.LENGTH_LONG).show();
 
     }
 

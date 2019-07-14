@@ -115,7 +115,7 @@ router.post('/register',function(req,res){
     });
 });
 
-router.post('/getVideos',function(req,res){
+router.get('/getVideos',function(req,res){
     var sql = "select * from content";
     con.query(sql, function(err, result){
         if(err){
@@ -143,6 +143,30 @@ router.post('/getVideos',function(req,res){
             res.json({
                 success  : true,
                 data : data
+            });
+        }
+    })
+});
+
+router.get('/getvideos2',function(req,res){
+    var sql = "select * from content";
+    con.query(sql, function(err, result){
+        if(err){
+            res.json({
+                success : false,
+                message : "An error occured"
+            });
+        }
+        else{
+            var videos=[];
+            result.forEach(content => {
+                if(content.contentType=="video"){
+                    videos.push(content.contentLocation);
+                }
+                
+            });
+            res.json({
+                data : videos
             });
         }
     })

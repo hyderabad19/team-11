@@ -13,8 +13,8 @@ public class TraineeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trainee);
     }
     public void Forum(View view){
-       // Intent i = new Intent(TraineeActivity.this, ForumActivity.class);
-        //startActivity(i);
+        Intent i = new Intent(TraineeActivity.this, ForumActivity.class);
+        startActivity(i);
     }
     public void alertClick(View view){
        // Intent i = new Intent(TraineeActivity.this, AlertActivity.class);

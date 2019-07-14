@@ -87,14 +87,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="onClick"
             android:text="ButtonA"
             android:textColor="@color/colorPrimary" />
+
         <Button
             android:id="@+id/buttonB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginBottom="@id/buttonA"
+            android:onClick="onClick4"
             android:text="buttonB"
             android:textColor="@color/colorPrimary" />
 
@@ -105,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginBottom="@id/buttonB"
+            android:onClick="onClick4"
             android:text="buttonC"
             android:textColor="@color/colorPrimary" />
 
@@ -114,15 +118,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginBottom="@id/buttonC"
+            android:onClick="onClick4"
             android:text="buttonD"
             android:textColor="@color/colorPrimary" />
 
-        <Button
+        <!--<Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClick2"
-            android:text="Submit" />
+            android:text="Submit" />-->
 
     </LinearLayout>
 

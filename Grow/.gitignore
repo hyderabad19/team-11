@@ -2,10 +2,10 @@
 .gradle
 /local.properties
 /.idea/caches
-/.idea/libraries
 /.idea/modules.xml
-/.idea/workspace.xml
+/.idea/libraries
 /.idea/navEditor.xml
+/.idea/workspace.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build

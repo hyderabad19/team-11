@@ -12,4 +12,4 @@ The mission of this app is to empower communities through improved education,liv
 Context:
 It is focused on enhancing the dignity and well-being of socially and economically vulnerable people.
 We develop and test innovative solutions to address complex social problems and leverage partnerships to scale up impact.
-It is a platform which is used to manage the entire life cycle of the aspirants.
+It is a platform which is used to manage the entire life cycle of the aspirants(youth).

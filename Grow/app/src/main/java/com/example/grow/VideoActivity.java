@@ -23,7 +23,7 @@ public class VideoActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         String titleData =bundle.getString("tile");
 
-        title.setText("Tile of the video");
+        title.setText(titleData);
         desc.setText("Video about a topic either general or specific and goes on multiple lines");
 
         VideoView videoview = (VideoView) findViewById(R.id.videoView1);

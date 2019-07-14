@@ -24,6 +24,7 @@
         <activity android:name=".ListActivity"/>
         <activity android:name=".MainDummyActivity"/>
         <activity android:name=".reg"/>
+        <activity android:name=".Login"/>
         <activity android:name=".UserActivity"/>
         <activity android:name=".QuizActivity"/>
         <activity android:name=".PlayActivity"/>

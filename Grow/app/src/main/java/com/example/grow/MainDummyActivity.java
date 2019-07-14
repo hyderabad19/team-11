@@ -13,7 +13,7 @@ public class MainDummyActivity extends AppCompatActivity {
     }
     public void userClick(View view)
     {
-        Intent i = new Intent(this, reg.class);
+        Intent i = new Intent(this, Login.class);
         startActivity(i);
     }
     public void traineeClick(View view)

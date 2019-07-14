@@ -28,3 +28,4 @@ router.post('/addTrainer',function(req,res){
     });
 });
 
+module.exports = router;

@@ -18,11 +18,15 @@ con.connect(function(err) {
 
 var userapiRouter = require('./apis/userapis'); 
 var forumapiRouter = require('./apis/forumapis');
+var trainerapiRouter = require('./apis/trainerapis');
+var adminapiRouter = require('./apis/adminapis');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use('/forum',forumapiRouter);
+app.use('/trainer',trainerapiRouter);
+app.use('/admin',adminapiRouter);
 
 app.get('/',function(req,res){
     res.send("HEllo world!");

@@ -1,5 +1,5 @@
 var express = require('express');
-var router = expresss.Router();
+var router = express.Router();
 var jwt    =   require('jsonwebtoken');
 var mysql = require('mysql');
 var secret = "DR.reddys";
@@ -63,34 +63,41 @@ router.post('/login',function(req,res){
     });
 });
 
+router.post('/sendAlertMessage',function(req,res){
+    var uemail = req.body.email;
+    var message = req.body.message;
+    var sql = "insert into helpmessages(uemail,message) values('"+uemail+"','"+message+"')";
+    con.query(sql,function(err,result){
+        if(err){
+            res.json({
+                success : false,
+                message : err
+            });
+        }else{
+            res.json({
+                success : true,
+                message : "Alert message submitted!"
+            });
+        }
+    });
+});
 
 router.get('/getHelpMessages',function(req,res){
     var sql="select * from helpmessages";
-    var name, mobile, email, message,al;
-    var alerts=[]
     con.query(sql,function(err,result){
-        result.forEach(alert => function(){
-            var uid=alert.uid;
-            message = alert.message;
-            sql="select uname,uemail,mobile from users where uid='"+uid+"'";
-            con.query(sql,function(err,result){
-                name = result.uname;
-                mobile = result.mobile;
-                email = result.email;
+        if(err){
+            res.json({
+                success : false,
+                message : "Error!"
             });
-            al={
-                name : name,
-                mobile : mobile,
-                email : email,
-                message : message
-            }
-            alerts.push(al);
-        });
-        res.json({
-            success : true,
-            data : alerts
-        });
+        }else{
+            res.json({
+                success : true,
+                data : result
+            })
+        }
     });
+    
 });
 
 

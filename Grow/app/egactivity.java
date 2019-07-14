@@ -1,4 +1,4 @@
-package com.javacodegeeks.android.loginapp;
+package com.android.loginapp;
  
 import android.graphics.Color;
 import android.os.Bundle;
